@@ -4,7 +4,7 @@ on:
     config:
       skipFirst: true
       sort:
-        pubDate: -1
+        pubDate: 1
 jobs:
   request:
     name: Make a HTTP Request
