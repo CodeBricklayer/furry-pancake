@@ -3,6 +3,8 @@ on:
     url: https://nitter.net/search/rss?f=tweets&q=lang%3Aja+min_faves%3A1000
     config:
       skipFirst: true
+      sort:
+        pubDate: -1
 jobs:
   request:
     name: Make a HTTP Request
