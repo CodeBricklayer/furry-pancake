@@ -1,6 +1,8 @@
 on:
   rss:
     url: https://nitter.net/search/rss?f=tweets&q=lang%3Aja+min_faves%3A1000
+    config:
+      limit: 5
 jobs:
   request:
     name: Make a HTTP Request
