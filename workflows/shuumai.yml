@@ -2,15 +2,18 @@ on:
   rss:
     url: https://nitter.net/search/rss?f=tweets&q=list%3A1337691182504144896+min_faves%3A500
 jobs:
-  discord:
-    name: Send a message to discord
+  request:
+    name: Make a HTTP Request
     runs-on: ubuntu-latest
     steps:
-      - name: Discord notification
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.SHUUMAI_DISCORD_WEBHOOK }}
-          DISCORD_USERNAME: Actionsflow
-          DISCORD_AVATAR: https://avatars2.githubusercontent.com/u/69839062?v=4
-        uses: Ilshidur/action-discord@master
+      - name: Make a HTTP Request
+        uses: actionsflow/axios@v1
         with:
-          args: '${{ on.rss.outputs.link }}'
+          url: ${{ secrets.SHUUMAI_DISCORD_WEBHOOK }}
+          method: POST
+          body: |
+            {
+              "username": "Actionsflow",
+              "avatar_url": "https://avatars2.githubusercontent.com/u/69839062?v=4",
+              "content": "${{ on.rss.outputs.link }}"
+            }
