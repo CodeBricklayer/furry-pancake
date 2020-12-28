@@ -2,7 +2,7 @@ on:
   rss:
     url: https://nitter.net/search/rss?f=tweets&q=%23%E3%82%A2%E3%82%B8%E9%AF%96+filter%3Aimages+OR+filter%3Avideos+exclude%3Aretweets
     config:
-      skipFirst: false
+      skipFirst: true
       sort:
         pubDate: 1
 jobs:
@@ -13,7 +13,7 @@ jobs:
       - name: Make a HTTP Request
         uses: actionsflow/axios@v1
         with:
-          url: ${{ secrets.HASHTAG_AZISABA_DISCORD_WEBHOOK }}
+          url: ${{ secrets.AZISABA_HASHTAG_DISCORD_WEBHOOK }}
           method: POST
           body: |
             {
