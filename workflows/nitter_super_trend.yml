@@ -1,0 +1,23 @@
+on:
+  rss:
+    url: https://nitter.net/search/rss?f=tweets&q=lang%3Aja+min_faves%3A50000
+    config:
+      skipFirst: true
+      sort:
+        pubDate: 1
+jobs:
+  request:
+    name: Make a HTTP Request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Make a HTTP Request
+        uses: actionsflow/axios@v1
+        with:
+          url: ${{ secrets.NITTER_SUPER_TREND_DISCORD_WEBHOOK }}
+          method: POST
+          body: |
+            {
+              "username": "Actionsflow",
+              "avatar_url": "https://avatars2.githubusercontent.com/u/69839062?v=4",
+              "content": "${{ on.rss.outputs.link }}"
+            }
