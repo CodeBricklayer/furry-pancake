@@ -1,10 +1,6 @@
 on:
   rss:
-    url: https://news.google.com/rss/topics/CAAqJAgKIh5DQkFTRUFvS0wyMHZNRGwyTm10d1p4SUNhbUVvQUFQAQ?hl=ja&gl=JP&ceid=JP:ja
-    config:
-      skipFirst: true
-      sort:
-        pubDate: 1
+    url: https://nitter.cc/search/rss?f=tweets&q=lang%3Aja+%28Minecraft+OR+%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%A9+OR+%E3%83%9E%E3%82%A4%E3%83%B3%E3%82%AF%E3%83%A9%E3%83%95%E3%83%88%29+min_faves%3A100
 jobs:
   request:
     name: Make a HTTP Request
@@ -13,7 +9,7 @@ jobs:
       - name: Make a HTTP Request
         uses: actionsflow/axios@v1
         with:
-          url: ${{ secrets.NEWS_MINECRAFT_DISCORD_WEBHOOK }}
+          url: ${{ secrets.TWITTER_MINECRAFT_WEBHOOK }}
           method: POST
           body: |
             {
