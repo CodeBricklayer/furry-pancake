@@ -16,7 +16,7 @@ jobs:
           method: POST
           body: |
             {
-              "username": "Twitter Hot",
-              "avatar_url": "https://actionsflow.github.io/favicon.svg",
+              "username": "Actionsflow",
+              "avatar_url": "https://avatars2.githubusercontent.com/u/69839062?v=4",
               "content": "${{ on.rss.outputs.link }}"
             }
