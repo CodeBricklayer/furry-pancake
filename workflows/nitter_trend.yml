@@ -9,11 +9,10 @@ jobs:
     name: Send a message to discord
     runs-on: ubuntu-latest
     steps:
-      - name: Discord notification
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.NITTER_TREND_DISCORD_WEBHOOK }}
-          DISCORD_USERNAME: Actionsflow
-          DISCORD_AVATAR: https://actionsflow.github.io/favicon.svg
-        uses: Ilshidur/action-discord@master
-        with:
-          args: '${{ on.rss.outputs.link }}'
+      - run: wget https://github.com/ChaoticWeg/discord.sh/raw/master/discord.sh
+      - run: chmod +x ./discord.sh
+      - run: ./discord.sh \
+          --webhook-url="${{ secrets.NITTER_TREND_DISCORD_WEBHOOK }}" \
+          --username "Actionsflow" \
+          --avatar "https://actionsflow.github.io/favicon.svg" \
+          --text "${{ on.rss.outputs.link }}"
