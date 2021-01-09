@@ -1,6 +1,6 @@
 on:
   rss:
-    url: https://nitter.dark.fail/search/rss?f=tweets&q=list%3A1326169415851810818+exclude%3Aretweets
+    url: https://nitter.dark.fail/search/rss?f=tweets&q=list%3A1326169415851810818+exclude%3Aretweets+min_faves%3A3
     config:
       sort:
         pubDate: 1
@@ -12,7 +12,7 @@ jobs:
       - name: Make a HTTP Request
         uses: actionsflow/axios@v1
         with:
-          url: ${{ secrets.NITTER_AZISABA_ADMIN_STALKER_DISCORD_WEBHOOK }}
+          url: ${{ secrets.TWITTER_AZISABA_ADMIN_WEBHOOK }}
           method: POST
           body: |
             {
