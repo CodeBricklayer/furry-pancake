@@ -12,7 +12,7 @@ jobs:
       - name: Make a HTTP Request
         uses: actionsflow/axios@v1
         with:
-          url: ${{ secrets.NITTER_SHUUMAI_DISCORD_WEBHOOK }}
+          url: ${{ secrets.TWITTER_SHUUMAI_WEBHOOK }}
           method: POST
           body: |
             {
