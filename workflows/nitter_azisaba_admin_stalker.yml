@@ -2,7 +2,6 @@ on:
   rss:
     url: https://nitter.dark.fail/search/rss?f=tweets&q=list%3A1326169415851810818+exclude%3Aretweets
     config:
-      skipFirst: true
       sort:
         pubDate: 1
 jobs:
