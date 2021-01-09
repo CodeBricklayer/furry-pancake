@@ -1,0 +1,22 @@
+on:
+  rss:
+    url: https://nitter.dark.fail/search/rss?f=tweets&q=lang%3Aja+min_faves%3A10000
+    config:
+      sort:
+        pubDate: 1
+jobs:
+  request:
+    name: Make a HTTP Request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Make a HTTP Request
+        uses: actionsflow/axios@v1
+        with:
+          url: ${{ secrets.TWITTER_HOT_WEBHOOK }}
+          method: POST
+          body: |
+            {
+              "username": "Twitter Hot",
+              "avatar_url": "https://actionsflow.github.io/favicon.svg",
+              "content": "${{ on.rss.outputs.link }}"
+            }
