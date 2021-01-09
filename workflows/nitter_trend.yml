@@ -5,18 +5,15 @@ on:
       sort:
         pubDate: 1
 jobs:
-  request:
-    name: Make a HTTP Request
+  discord:
+    name: Send a message to discord
     runs-on: ubuntu-latest
     steps:
-      - name: Make a HTTP Request
-        uses: actionsflow/axios@v1
+      - name: Discord notification
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.NITTER_TREND_DISCORD_WEBHOOK }}
+          DISCORD_USERNAME: Actionsflow
+          DISCORD_AVATAR: https://actionsflow.github.io/favicon.svg
+        uses: Ilshidur/action-discord@master
         with:
-          url: ${{ secrets.NITTER_TREND_DISCORD_WEBHOOK }}
-          method: POST
-          body: |
-            {
-              "username": "Actionsflow",
-              "avatar_url": "https://avatars2.githubusercontent.com/u/69839062?v=4",
-              "content": "${{ on.rss.outputs.link }}"
-            }
+          args: '${{ on.rss.outputs.link }}'
