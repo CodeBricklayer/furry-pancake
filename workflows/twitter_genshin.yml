@@ -1,0 +1,19 @@
+on:
+  rss:
+    url: https://nitter.cc/search/rss?f=tweets&q=lang%3Aja+%28%E5%8E%9F%E7%A5%9E%29+min_faves%3A100
+jobs:
+  request:
+    name: Make a HTTP Request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Make a HTTP Request
+        uses: actionsflow/axios@v1
+        with:
+          url: ${{ secrets.TWITTER_GENSHIN_WEBHOOK }}
+          method: POST
+          body: |
+            {
+              "username": "Actionsflow",
+              "avatar_url": "https://avatars2.githubusercontent.com/u/69839062?v=4",
+              "content": "${{ on.rss.outputs.link }}"
+            }
