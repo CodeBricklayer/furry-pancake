@@ -1,6 +1,6 @@
 on:
   rss:
-    url: https://nitter.cc/search/rss?f=tweets&q=lang%3Aja+%28%E5%8E%9F%E7%A5%9E%29+min_faves%3A100
+    url: https://nitter.kavin.rocks/search/rss?f=tweets&q=lang%3Aja+%28%E5%8E%9F%E7%A5%9E%29+min_faves%3A100
 jobs:
   request:
     name: Make a HTTP Request
